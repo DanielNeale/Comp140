@@ -6,13 +6,9 @@ using System.Collections;
 
 public class ArduinoComm : MonoBehaviour
 {
-
-    public GameObject playerOne;
-    public bool controllerActive = false;
-    public int commPort = 0;
-
+    [SerializeField]
+    private int commPort = 0;
     private SerialPort serial = null;
-    private bool connected = false;
 
     void Start()
     {
@@ -23,7 +19,6 @@ public class ArduinoComm : MonoBehaviour
     {
         Debug.Log("Attempting Serial: " + commPort);
 
-        // Read this: https://support.microsoft.com/en-us/help/115831/howto-specify-serial-ports-larger-than-com9
         serial = new SerialPort("\\\\.\\COM" + commPort, 9600);
         serial.ReadTimeout = 50;
         serial.Open();
@@ -35,24 +30,10 @@ public class ArduinoComm : MonoBehaviour
     {
         WriteToArduino("R");
         string output = ReadFromArduino(50);
-        Debug.Log(output);
-
-
-        if (controllerActive)
+        
+        if (output != null)
         {
-            /*WriteToArduino("I");                // Ask for the positions
-            String value = ReadFromArduino(50); // read the positions
-
-            if (value != null)                  // check to see if we got what we need
-            {
-                // EXPECTED VALUE FORMAT: "0-1023"
-                string[] values = value.Split('-');     // split the values
-
-                if (values.Length == 2)
-                {
-                    positionPlayers(values);
-                }
-            }*/
+            GetComponent<RailController>().setRails(output);
         }
     }
 

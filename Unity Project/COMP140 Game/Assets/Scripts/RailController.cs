@@ -15,7 +15,9 @@ public class RailController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        //Manual Track control - Depricated
+
+        /*if (Input.GetKeyDown(KeyCode.Q))
         {
             railOneActive = !railOneActive;
             transformRail(railOneActive, 0, 1);
@@ -37,19 +39,70 @@ public class RailController : MonoBehaviour
         {
             railFourActive = !railFourActive;
             transformRail(railFourActive, 3, -1);
-        }
+        }*/
     }
 
     private void transformRail(bool active, int rail, int direction)
     {
         if (active)
         {
-            rails[rail].Rotate(Vector3.up, 15 * direction);
+            rails[rail].rotation = Quaternion.Euler(0, 30 * direction, 0);
         }
 
         if (!active)
         {
-            rails[rail].Rotate(Vector3.up, -15 * direction);
+            rails[rail].rotation = Quaternion.Euler(0, 15 * direction, 0);
         }
+    }
+
+    public void setRails(string input)
+    {
+        if (input[0].ToString() == "1")
+        {
+            railOneActive = true;
+        }
+
+        else
+        {
+            railOneActive = false;
+        }
+
+
+        if (input[1].ToString() == "1")
+        {
+            railTwoActive = true;
+        }
+
+        else
+        {
+            railTwoActive = false;
+        }
+
+
+        if (input[2].ToString() == "1")
+        {
+            railThreeActive = true;
+        }
+
+        else
+        {
+            railThreeActive = false;
+        }
+
+
+        if (input[3].ToString() == "1")
+        {
+            railFourActive = true;
+        }
+
+        else
+        {
+            railFourActive = false;
+        }
+
+        transformRail(railOneActive, 0, 1);
+        transformRail(railTwoActive, 1, -1);
+        transformRail(railThreeActive, 2, 1);
+        transformRail(railFourActive, 3, -1);
     }
 }
