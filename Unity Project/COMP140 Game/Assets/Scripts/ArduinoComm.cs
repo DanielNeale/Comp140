@@ -10,10 +10,12 @@ public class ArduinoComm : MonoBehaviour
     private int commPort = 0;
     private SerialPort serial = null;
 
+
     void Start()
     {
         ConnectToSerial();
     }
+
 
     void ConnectToSerial()
     {
@@ -26,6 +28,7 @@ public class ArduinoComm : MonoBehaviour
         Debug.Log("Connected");
     }
 
+
     void Update()
     {
         WriteToArduino("R");
@@ -37,11 +40,13 @@ public class ArduinoComm : MonoBehaviour
         }
     }
 
+
     void WriteToArduino(string message)
     {
         serial.WriteLine(message);
         serial.BaseStream.Flush();
     }
+
 
     public string ReadFromArduino(int timeout = 0)
     {
@@ -56,16 +61,10 @@ public class ArduinoComm : MonoBehaviour
         }
     }
 
-    // be sure to close the serial when the game ends.
+
     void OnDestroy()
     {
         Debug.Log("Exiting");
         serial.Close();
-    }
-
-    // https://forum.unity.com/threads/re-map-a-number-from-one-range-to-another.119437/
-    float Remap(float value, float from1, float to1, float from2, float to2)
-    {
-        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
 }

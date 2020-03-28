@@ -36,13 +36,13 @@ void loop()
   {
     input = Serial.read();
     
-    if (input = "R")
+    if (input == 'R')
     {
       Serial.print(onA);
       Serial.print(onB);
       Serial.print(onC);
       Serial.println(onD);
-    } 
+    }
   }
 
   
