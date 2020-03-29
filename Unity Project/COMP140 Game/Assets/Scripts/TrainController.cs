@@ -6,15 +6,7 @@ public class TrainController : MonoBehaviour
 {
     [SerializeField]
     private float speed = 0;
-    [SerializeField]
-    private Transform startPos = null;
     private Transform target;
-
-    void Start()
-    {
-        transform.position = startPos.position;
-        
-    }
 
     void FixedUpdate()
     {
@@ -24,6 +16,7 @@ public class TrainController : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         target = collision.transform.GetChild(0).transform;
-        transform.LookAt(target);
+        Vector3 targetPos = new Vector3(target.position.x, transform.position.y, target.position.z);
+        transform.LookAt(targetPos);
     }
 }
