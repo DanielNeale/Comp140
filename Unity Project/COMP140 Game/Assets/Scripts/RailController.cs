@@ -46,12 +46,12 @@ public class RailController : MonoBehaviour
     {
         if (active)
         {
-            rails[rail].rotation = Quaternion.Euler(0, 30 * direction, 0);
+            rails[rail].rotation = Quaternion.Euler(0, 26 * direction, 0);
         }
 
         if (!active)
         {
-            rails[rail].rotation = Quaternion.Euler(0, 15 * direction, 0);
+            rails[rail].rotation = Quaternion.Euler(0, 18 * direction, 0);
         }
     }
 
