@@ -15,8 +15,24 @@ public class TrainController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        target = collision.transform.GetChild(0).transform;
-        Vector3 targetPos = new Vector3(target.position.x, transform.position.y, target.position.z);
-        transform.LookAt(targetPos);
+        if (collision.gameObject.layer == 10)
+        {
+            if (collision.transform.tag == transform.tag)
+            {
+                Debug.Log("yes");
+            }
+
+            else
+            {
+                Debug.Log("no");
+            }
+        }
+
+        else
+        {
+            target = collision.transform.GetChild(0).transform;
+            Vector3 targetPos = new Vector3(target.position.x, transform.position.y, target.position.z);
+            transform.LookAt(targetPos);
+        }
     }
 }

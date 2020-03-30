@@ -14,8 +14,8 @@ public class SpawnTrains : MonoBehaviour
 
     void Start()
     {
-        currentTime = 5;
-        timer = currentTime;
+        currentTime = 25;
+        timer = currentTime - 20;
     }
 
     void Update()
@@ -29,9 +29,9 @@ public class SpawnTrains : MonoBehaviour
 
             Instantiate(newTrain, newSpawn.position, newSpawn.rotation);
 
-            if (currentTime > 2)
+            if (currentTime > 3)
             {
-                currentTime -= 0.1f;
+                currentTime -= 0.2f;
             }
             
             timer = currentTime;

@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 1007749568528789495}
   m_Layer: 0
   m_Name: YellowTrain
-  m_TagString: Untagged
+  m_TagString: Yellow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
