@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class TrainController : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 0;
+    private float speed;
     private Transform target;
+    private GameObject controller;
+
+
+    public void initialisation(int newSpeed, GameObject newController)
+    {
+        speed = newSpeed;
+        controller = newController;
+    }
+
 
     void FixedUpdate()
     {
         GetComponent<Rigidbody>().velocity = transform.forward * speed;
     }
+
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -19,12 +28,12 @@ public class TrainController : MonoBehaviour
         {
             if (collision.transform.tag == transform.tag)
             {
-                Debug.Log("yes");
+                controller.GetComponent<Score>().AddScore(1);
             }
 
             else
             {
-                Debug.Log("no");
+                controller.GetComponent<Score>().TakeLife();
             }
         }
 

@@ -57,7 +57,7 @@ public class RailController : MonoBehaviour
 
     public void setRails(string input)
     {
-        if (input[0].ToString() == "1")
+        if (input[1].ToString() == "1")
         {
             railOneActive = true;
         }
@@ -68,7 +68,7 @@ public class RailController : MonoBehaviour
         }
 
 
-        if (input[1].ToString() == "1")
+        if (input[0].ToString() == "1")
         {
             railTwoActive = true;
         }
@@ -79,7 +79,7 @@ public class RailController : MonoBehaviour
         }
 
 
-        if (input[2].ToString() == "1")
+        if (input[3].ToString() == "1")
         {
             railThreeActive = true;
         }
@@ -90,7 +90,7 @@ public class RailController : MonoBehaviour
         }
 
 
-        if (input[3].ToString() == "1")
+        if (input[2].ToString() == "1")
         {
             railFourActive = true;
         }

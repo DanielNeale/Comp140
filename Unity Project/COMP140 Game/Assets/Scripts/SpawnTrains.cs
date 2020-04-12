@@ -27,7 +27,8 @@ public class SpawnTrains : MonoBehaviour
             Transform newSpawn = spawnPoints[Random.Range(0, spawnPoints.Length)];
             GameObject newTrain = trains[Random.Range(0, trains.Length)];
 
-            Instantiate(newTrain, newSpawn.position, newSpawn.rotation);
+            GameObject train = Instantiate(newTrain, newSpawn.position, newSpawn.rotation);
+            train.GetComponent<TrainController>().initialisation(2, gameObject);
 
             if (currentTime > 3)
             {
