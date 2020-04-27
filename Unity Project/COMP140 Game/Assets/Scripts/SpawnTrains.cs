@@ -17,8 +17,8 @@ public class SpawnTrains : MonoBehaviour
     void Start()
     {
         trainSpeed = 1.5f;
-        currentTime = 25;
-        timer = currentTime - 20;
+        currentTime = 20;
+        timer = currentTime - 15;
     }
 
     void Update()
