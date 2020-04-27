@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField]
-    private int lives = 0;
+    private int lives;
     private int score;
 
     [SerializeField]
@@ -26,15 +23,15 @@ public class Score : MonoBehaviour
 
     void Start()
     {
-        scoreText.text = ("Score: " + score);
-        livesText.text = ("Lives: " + lives);
-
-        startUI.SetActive(true);
-        gameUI.SetActive(false);
-        endUI.SetActive(false);
+        Reset();
     }
 
 
+    /// <summary>
+    /// Adds a number to the score
+    /// </summary>
+    /// <param name="gainedScore"></param>
+    /// The amount of score to add
     public void AddScore(int gainedScore)
     {
         score += gainedScore;
@@ -42,6 +39,9 @@ public class Score : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Removes a life and ends the game if lives go to zero
+    /// </summary>
     public void TakeLife()
     {
         lives -= 1;
@@ -56,6 +56,9 @@ public class Score : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Starts trains spawning and opens game UI
+    /// </summary>
     public void StartGame()
     {
         gameObject.GetComponent<SpawnTrains>().setSpawn(true);
@@ -63,6 +66,9 @@ public class Score : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Resets variables and opens start UI
+    /// </summary>
     public void Reset()
     {
         SetUI(0);
@@ -73,6 +79,11 @@ public class Score : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Closes all UI and opens the one specified
+    /// </summary>
+    /// <param name="UI"></param>
+    /// The UI that needs to be opened
     void SetUI(int UI)
     {
         startUI.SetActive(false);

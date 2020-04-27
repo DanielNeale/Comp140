@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RailController : MonoBehaviour
 {
@@ -42,6 +40,17 @@ public class RailController : MonoBehaviour
         }*/
     }
 
+
+    /// <summary>
+    /// Sets the referenced rail to active or inactive
+    /// </summary>
+    /// <param name="active"></param>
+    /// Is the rail on or off
+    /// <param name="rail"></param>
+    /// The ID of the rail changed
+    /// <param name="direction"></param>
+    /// The direction the rail is facing so it rotates the correct way,
+    /// either 1 or -1
     private void transformRail(bool active, int rail, int direction)
     {
         if (active)
@@ -55,6 +64,10 @@ public class RailController : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Gets a 4 digit number from the controller and parses the information to set the rails
+    /// </summary>
     public void setRails(string input)
     {
         if (input[1].ToString() == "1")
