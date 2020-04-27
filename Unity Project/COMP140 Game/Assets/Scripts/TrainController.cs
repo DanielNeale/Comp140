@@ -9,7 +9,7 @@ public class TrainController : MonoBehaviour
     private GameObject controller;
 
 
-    public void initialisation(int newSpeed, GameObject newController)
+    public void initialisation(float newSpeed, GameObject newController)
     {
         speed = newSpeed;
         controller = newController;

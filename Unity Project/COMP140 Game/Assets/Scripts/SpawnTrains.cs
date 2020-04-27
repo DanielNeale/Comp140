@@ -11,31 +11,48 @@ public class SpawnTrains : MonoBehaviour
 
     private float currentTime;
     private float timer;
+    private bool spawn;
+    private float trainSpeed;
 
     void Start()
     {
+        trainSpeed = 1.5f;
         currentTime = 25;
         timer = currentTime - 20;
     }
 
     void Update()
     {
-        timer -= Time.deltaTime;
-
-        if (timer < 0)
+        if (spawn)
         {
-            Transform newSpawn = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            GameObject newTrain = trains[Random.Range(0, trains.Length)];
+            timer -= Time.deltaTime;
 
-            GameObject train = Instantiate(newTrain, newSpawn.position, newSpawn.rotation);
-            train.GetComponent<TrainController>().initialisation(2, gameObject);
-
-            if (currentTime > 3)
+            if (timer < 0)
             {
-                currentTime -= 0.2f;
-            }
-            
-            timer = currentTime;
+                Transform newSpawn = spawnPoints[Random.Range(0, spawnPoints.Length)];
+                GameObject newTrain = trains[Random.Range(0, trains.Length)];
+
+                GameObject train = Instantiate(newTrain, newSpawn.position, newSpawn.rotation);
+                train.GetComponent<TrainController>().initialisation(trainSpeed, gameObject);
+
+                if (currentTime > 3)
+                {
+                    currentTime -= 0.5f;
+                }
+
+                if (trainSpeed < 3)
+                {
+                    trainSpeed += 0.05f;
+                }
+
+                timer = currentTime;
+            }       
         }
+    }
+
+    
+    public void setSpawn(bool newSpawn)
+    {
+        spawn = newSpawn;
     }
 }
